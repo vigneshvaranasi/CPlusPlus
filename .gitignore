@@ -1,0 +1,24 @@
+# Ignore compiled executables and build files
+*.exe
+*.out
+*.o
+*.a
+*.so
+*.dylib
+
+# Ignore swap files and session files
+*.swp
+*.swo
+*.swn
+*.spo
+
+# Ignore generated documentation
+doc/
+
+# Ignore system and editor-specific files
+.vscode/
+.idea/
+
+# Ignore compiled C/C++ files
+*.gch
+*.pch

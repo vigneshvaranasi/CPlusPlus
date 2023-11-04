@@ -10,7 +10,6 @@ int main()
 {
     ifstream give("file1.txt");
     ofstream take("file2.txt");
-    int lc = 0, i = 0, wc = 0;
     string word, line;
     vector<string> str;
     while (getline(give, line))
@@ -24,5 +23,5 @@ int main()
     sort(str.begin(), str.end());
     for (string x : str)
         take<<x<<endl;
-        return 0;
+    return 0;
 }

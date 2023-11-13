@@ -10,7 +10,6 @@ int main()
     ofstream take("file3.txt");
     string s;
     while (getline(give1, s))
-
     {
         take << s << endl;
     }

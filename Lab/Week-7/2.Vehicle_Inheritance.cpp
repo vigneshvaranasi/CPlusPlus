@@ -12,7 +12,7 @@ class TwoWheelers:public vehicle
 {
     public:
     void display()
-    {
+    {  
         cout<<"These Vehicals Contain 2 Wheels"<<endl;
     }
 };

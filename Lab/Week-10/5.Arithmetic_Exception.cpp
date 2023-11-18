@@ -12,7 +12,7 @@ void fun(t num1,t num2)
     }
     catch(int exception)
     {
-        cout<<"Arithmetic Expression"<<endl;
+        cout<<"Arithmetic Exception"<<endl;
     }
 }
 

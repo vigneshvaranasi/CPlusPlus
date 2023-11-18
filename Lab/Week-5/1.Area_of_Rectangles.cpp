@@ -10,7 +10,7 @@ class Rectangle
         int length,breadth;
         Rectangle()
         {
-            cout<<"Eenter Length and Breadth:";
+            cout<<"Enter Length and Breadth:";
             cin>>length>>breadth;
         }
         int area()

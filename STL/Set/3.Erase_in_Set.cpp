@@ -19,4 +19,24 @@ int main()
     for (auto j : s)
         cout << j << " ";
     cout<<endl;
+
+    s.insert(20);
+    s.insert(30);
+    s.insert(40);
+    s.insert(50);
+
+    for (auto j : s)
+        cout << j << " ";
+    cout<<endl;
+
+    cout<<s.size()<<endl;
+    s.erase(s.begin(),s.find(30));
+
+    for (auto j : s)
+        cout << j << " ";
+    cout<<endl;
+    cout<<s.size()<<endl;
+
+    s.clear();
+    cout<<s.size()<<endl;
 }

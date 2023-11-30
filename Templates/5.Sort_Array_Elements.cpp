@@ -1,6 +1,5 @@
 #include <iostream>
 #include <algorithm> 
-#include <iterator>  
 using namespace std;
 template <class T>
 void sortArray(T &arr) {

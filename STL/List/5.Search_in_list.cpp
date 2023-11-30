@@ -18,11 +18,11 @@ int main()
     auto i = find(l.begin(),l.end(),target);
     if (i != l.end())
     {
-        cout << "Element " << target << " found in the set." << endl;
+        cout << "Element " << target << " found in the List." << endl;
     }
     else
     {
-        cout << "Element " << target << " not found in the set." << endl;
+        cout << "Element " << target << " not found in the List." << endl;
     }
     return 0;
 }

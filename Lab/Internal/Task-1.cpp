@@ -61,8 +61,7 @@ void test()
 Article Article1(1111, "volley ball", 59.9);
 int main()
 {
-    cout << "\nThe first statement in main().\n"
-         << endl;
+    cout << "\nThe first statement in main().\n"<< endl;
     Article Article2(2222, "gym-shoes", 199.99);
     Article1.print();
     Article2.print();
@@ -76,7 +75,6 @@ int main()
     test();
     cout << "\nThe second call to test()." << endl;
     test();
-    cout << "\nThe last statement in main().\n"
-         << endl;
+    cout << "\nThe last statement in main().\n"<< endl;
     return 0;
 }

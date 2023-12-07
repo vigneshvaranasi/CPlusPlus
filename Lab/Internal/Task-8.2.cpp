@@ -7,22 +7,31 @@ private:
     double imag;
 
 public:
-    Complex(double realPart, double imagPart)
+    Complex(double realPart=0, double imagPart=0)
     {
         real = realPart;
         imag = imagPart;
     }
-    Complex operator+(const Complex &c2)
+    Complex operator+(const Complex &c)
     {
-        return Complex(real + c2.real, imag + c2.imag);
+        Complex ac;
+        ac.real = real + c.real;
+        ac.imag = imag + c.imag;
+        return ac;
     }
-    Complex operator-(const Complex &c2)
+    Complex operator-(const Complex &c)
     {
-        return Complex(real - c2.real, imag - c2.imag);
+        Complex ac;
+        ac.real = real - c.real;
+        ac.imag = imag - c.imag;
+        return ac;
     }
-    Complex operator*(const Complex &c2)
+    Complex operator*(const Complex &c)
     {
-        return Complex((real * c2.real) - (imag * c2.imag), (real * c2.imag) + (imag * c2.real));
+        Complex ac;
+        ac.real = real * c.real;
+        ac.imag = imag * c.imag;
+        return ac;        
     }
     friend ostream &operator<<(ostream &os, Complex &c)
     {

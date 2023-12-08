@@ -9,7 +9,7 @@ public:
 
 class Derived : public Base {
 public:
-    void display() override {
+    void display() {
         cout << "Derived class display" << endl;
     }
 };

@@ -22,7 +22,6 @@ int main()
     auto it = student_map.find(roll_number);
     if (it != student_map.end())
     {
-        vector<string> &details = it->second;
         cout << "Student details for Roll Number " << roll_number << ": ";
         for (int i = 0; i < it->second.size(); ++i)
         {

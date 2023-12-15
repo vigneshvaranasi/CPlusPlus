@@ -84,9 +84,12 @@ This repository is your comprehensive guide to learning and mastering C++. Organ
 - Standard Template Library (STL)
     - Overview of the STL
     - Containers (sequence and associative)
+    - sequence container: vector,list
+    - Associative containers: set, map
     - Algorithms provided by the STL
     - Iterators and their role in STL
     - Practical applications of the STL
+    
     
 ## Key Features
 

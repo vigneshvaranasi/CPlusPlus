@@ -4,7 +4,7 @@ Welcome to the C++ repository! 🚀
 This repository is your comprehensive guide to learning and mastering C++. Organized in a topic-wise manner, you'll find a curated collection of code examples, explanations, and resources for each key aspect of C++ programming.
 ## Links For Notes
 
-1. [Introduction to C++](#)
+1. [Introduction to C++](https://vigneshvaranasi.github.io/CPlusPlus/Notes/Introduction%20to%20C++)
 2. [Classes and Objects](#)
 3. [Constructors and Destructors](#)
 4. [Operator Overloading](#)

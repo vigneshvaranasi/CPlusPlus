@@ -5,7 +5,7 @@ This repository is your comprehensive guide to learning and mastering C++. Organ
 ## Links For Notes
 
 1. [Introduction to C++](https://vigneshvaranasi.github.io/CPlusPlus/Notes/Introduction%20to%20C++)
-2. [Classes and Objects](#)
+2. [Classes and Objects](https://vigneshvaranasi.github.io/CPlusPlus/Notes/Classes%20and%20Objects)
 3. [Constructors and Destructors](#)
 4. [Operator Overloading](#)
 5. [Inheritance](#)

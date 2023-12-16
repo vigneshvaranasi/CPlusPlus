@@ -1,0 +1,676 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Introduction to C++</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="be4eb18e-1d3e-4308-8c68-8fe2440a7d71" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="https://www.notion.so/icons/code_blue.svg"/></div><h1 class="page-title">Introduction to C++</h1><p class="page-description"></p></header><div class="page-body"><p id="8f842fcb-3a3a-410e-8266-5ddee74c48f2" class="">C++ is a powerful, versatile programming language developed as an extension of C. It supports both low-level memory manipulation and high-level abstractions, making it widely used for system software, games, and various applications. With features like classes and templates, C++ enables modular and efficient code development</p><h2 id="0a9b0811-2972-4afa-a4fd-c96d8a053feb" class="">Difference between <code>C</code> and <code>C++</code></h2><table id="455122af-2113-4d69-b82a-e469c42712dc" class="simple-table"><tbody><tr id="f3f58914-302a-40c4-8cb1-1c65c9a04633"><td id="@aJs" class="">Feature</td><td id="pJg^" class="">C</td><td id="SE=U" class="">C++</td></tr><tr id="f73b6503-594b-43db-904d-0796554f12ec"><td id="@aJs" class=""><strong>Paradigm</strong></td><td id="pJg^" class="">Procedural programming</td><td id="SE=U" class="">Multi-paradigm (procedural, object-oriented, generic)</td></tr><tr id="05bac663-2874-406a-812c-f12d8d904143"><td id="@aJs" class=""><strong>Structures</strong></td><td id="pJg^" class="">Limited to structures</td><td id="SE=U" class="">Structures and classes with member functions</td></tr><tr id="4693a75a-7fd1-4230-8b26-2e733ab43436"><td id="@aJs" class=""><strong>Functions</strong></td><td id="pJg^" class="">No member functions</td><td id="SE=U" class="">Supports member functions</td></tr><tr id="56a44d1c-74b0-4d96-ac53-46178d83e68e"><td id="@aJs" class=""><strong>Memory Management</strong></td><td id="pJg^" class="">Manual memory management</td><td id="SE=U" class="">Supports both manual and automatic memory management through features like new and delete</td></tr><tr id="b4e16a04-de43-4125-ab76-8a0b6c5a17a8"><td id="@aJs" class=""><strong>Data Hiding</strong></td><td id="pJg^" class="">No concept of data hiding</td><td id="SE=U" class="">Supports data hiding through private, protected, and public access specifiers in classes</td></tr><tr id="143c98a2-27b1-49b8-aa96-2e9d91dbb540"><td id="@aJs" class=""><strong>Code Structure</strong></td><td id="pJg^" class="">Emphasis on functions</td><td id="SE=U" class="">Emphasis on classes and objects</td></tr><tr id="3300e0cd-3889-4edf-9ef6-441212def127"><td id="@aJs" class=""><strong>Inheritance</strong></td><td id="pJg^" class="">Does not support inheritance</td><td id="SE=U" class="">Supports single and multiple inheritance</td></tr><tr id="2acf9d06-4180-4870-8c86-d59a371f2529"><td id="@aJs" class=""><strong>Polymorphism</strong></td><td id="pJg^" class="">No native support for polymorphism</td><td id="SE=U" class="">Supports polymorphism through function overloading and virtual functions</td></tr><tr id="fe61939a-3a3c-4055-b07d-00ea24c93c04"><td id="@aJs" class=""><strong>File Extensions</strong></td><td id="pJg^" class="">Source files have .c extension</td><td id="SE=U" class="">Source files have .cpp extension</td></tr></tbody></table><h2 id="0e4b1baa-fa3d-48fe-8f36-c6153c8874ac" class="">What is OOPS?</h2><p id="38abbae2-587b-4d04-b727-b0255115dcd1" class="">OOPS stands for Object-Oriented Programming (OOP). It is a programming paradigm that uses the concept of &quot;objects&quot; to design and organize code. Objects are instances of classes, and a class is a blueprint or template that defines the attributes (data) and behaviors (methods/functions) common to all objects of a certain type.</p><h2 id="c505bde9-0655-46c8-8af1-459f8d8913a3" class="">Features of OOP</h2><p id="6a4ee056-7bdb-4768-b5e1-6093e3a5fdb3" class="">1. <strong>Objects:</strong><br/>Objects are instances of classes and represent real-world entities. They encapsulate data and behavior.<br/></p><p id="890c8fe3-75b5-4689-b07e-c613cb8b9615" class="">2. <strong>Classes:</strong><br/>    Classes serve as blueprints or templates for creating objects, defining attributes and methods common to all instances.<br/></p><p id="ee9cc6ac-a35b-4bfa-a161-c421be6b883d" class="">3. <strong>Encapsulation:</strong><br/>    Encapsulation bundles data and methods within a class, restricting direct access to the internal details and providing controlled interaction.<br/></p><p id="16dfb941-80dd-4c0f-a8dd-a347d70e6d08" class="">4. <strong>Data Abstraction:</strong><br/>    Data abstraction involves hiding the implementation details of data and exposing only essential features, enhancing security and simplicity.<br/></p><p id="8eb32c16-105e-4c1c-9aef-f65d3bf882bf" class="">5. <strong>Inheritance:</strong><br/>    Inheritance allows a class (subclass) to inherit properties and behaviors from another class (superclass), promoting code reuse and hierarchy.<br/></p><p id="7c9bf7be-a423-467c-b238-788f5d2a7637" class="">6. <strong>Polymorphism:</strong><br/>    Polymorphism enables objects of different types to be treated as objects of a common type, supporting flexibility and adaptability.</p><p id="e55fe431-d5b7-4ea8-9d74-a6cca8fed603" class="">7. <strong>Dynamic Binding:</strong><br/>    Dynamic binding allows the association between a method call and its implementation to be determined at runtime, promoting flexibility.<br/></p><p id="a224491d-e411-4d9d-94e3-cebba2fbd9ab" class="">8. <strong>Message Passing:</strong><br/>    Objects communicate by sending messages, facilitating interaction and collaboration between objects in a system.<br/></p><p id="1839d3c7-edb8-40c7-b275-43c8fcffd425" class="">9. <strong>Reusability:</strong><br/>    Reusability is achieved through mechanisms like inheritance and polymorphism, reducing redundancy and promoting efficient code utilization.<br/></p><p id="e916cfdc-9163-4e41-bc3b-daf14e98cf44" class="">10. <strong>Delegation:</strong><br/>    Delegation involves one object assigning a task to another object, promoting a clear separation of responsibilities and modular design.<br/></p><p id="7b93f945-f716-4840-a72a-115576e4fd00" class="">11. <strong>Genericity:</strong><br/>    Genericity, or generics, allows the creation of classes or methods that can work with different types, promoting code flexibility and reuse.<br/></p><h3 id="c83909e2-1160-476f-ad31-c47949c7c462" class="">Advantages of OOP</h3><p id="d8d99da5-598c-4125-a57b-a5936c7289f4" class="">1. Modularity<br/>2. Code Reusability<br/>3. Encapsulation<br/>4. Flexibility and Adaptability<br/>5. Readability and Maintainability<br/>6. Enhanced Software Development<br/>7. Scalability<br/>8. Improved Software Design<br/>9. Facilitates Collaboration<br/>10. Adherence to Industry Standards<br/></p><h3 id="2a0392ca-d088-4f6f-8ccc-a3d485b3f21a" class="">Usage of OOP</h3><p id="77133a01-3ed4-448c-91db-55a5328f6a4d" class="">1. Software Development<br/>2. Game Development<br/>3. Web Development<br/>4. Mobile App Development<br/>5. Embedded Systems<br/>6. Graphical User Interface (GUI) Design<br/>7. Simulation and Modeling<br/>8. Artificial Intelligence (AI) Programming<br/>9. Database Applications<br/>10. Real-time Systems<br/></p><h3 id="9dc2a035-9d5a-4a7d-9451-41e295bcc475" class="">Object Oriented Programming VS Procedure Oriented Programming</h3><table id="05e43b61-5917-43d7-bff9-ef31ba754210" class="simple-table"><tbody><tr id="07237ed1-c4d0-406e-bb51-a25544d8d14b"><td id="jf]L" class="">Feature</td><td id="P:Bj" class="">Object-Oriented Programming (OOP)</td><td id="we&gt;z" class="">Procedure-Oriented Programming (POP)</td></tr><tr id="6f2bdba2-7983-4dd2-a8f5-a6f3766ad950"><td id="jf]L" class=""><strong>Paradigm</strong></td><td id="P:Bj" class="">Multi-paradigm, including procedural, object-oriented</td><td id="we&gt;z" class="">Procedural</td></tr><tr id="3c16a246-def2-4fd4-9187-d3c43ae3a843"><td id="jf]L" class=""><strong>Units of Organization</strong></td><td id="P:Bj" class="">Classes and objects</td><td id="we&gt;z" class="">Functions and procedures</td></tr><tr id="f711d52e-91e9-4770-9586-921fe22572b4"><td id="jf]L" class=""><strong>Data and Behavior</strong></td><td id="P:Bj" class="">Combines data and behavior into objects</td><td id="we&gt;z" class="">Separates data and behavior; functions operate on data</td></tr><tr id="6f49e4d7-ba15-4109-b46b-4a19aca6fe55"><td id="jf]L" class=""><strong>Encapsulation</strong></td><td id="P:Bj" class="">Encapsulation bundles data and methods within a class</td><td id="we&gt;z" class="">Limited encapsulation; data and functions are separate</td></tr><tr id="b2701dc2-6953-4a6e-b6a8-510581aa0bdb"><td id="jf]L" class=""><strong>Inheritance</strong></td><td id="P:Bj" class="">Supports inheritance for code reuse and hierarchy</td><td id="we&gt;z" class="">No built-in support for inheritance</td></tr><tr id="ce249481-042c-42da-a7d1-99547c9ebfb7"><td id="jf]L" class=""><strong>Polymorphism</strong></td><td id="P:Bj" class="">Supports polymorphism through function overloading, virtual functions</td><td id="we&gt;z" class="">Limited or no support for polymorphism</td></tr><tr id="d9d605d0-1470-4a62-9e75-dc18d535e4ef"><td id="jf]L" class=""><strong>Abstraction</strong></td><td id="P:Bj" class="">Abstraction involves modeling classes based on essential properties and behaviors</td><td id="we&gt;z" class="">Limited abstraction, focuses on algorithms and procedures</td></tr><tr id="0f10ccd4-0aa6-49a9-8d7f-a9ba19c071bc"><td id="jf]L" class=""><strong>Modularity</strong></td><td id="P:Bj" class="">Promotes modularity through the use of classes and objects</td><td id="we&gt;z" class="">Modularity is achieved through functions and procedures</td></tr><tr id="f95c92c6-3478-4e34-8a13-5f20ccc75d39"><td id="jf]L" class=""><strong>Readability and Maintenance</strong></td><td id="P:Bj" class="">Generally considered more readable and maintainable, especially for large projects</td><td id="we&gt;z" class="">May become complex and harder to maintain as project size grows</td></tr><tr id="6688beee-c5ed-4c94-80ff-36e405844564"><td id="jf]L" class=""><strong>Examples of Languages</strong></td><td id="P:Bj" class="">C++, Java, Python</td><td id="we&gt;z" class="">C, Fortran</td></tr></tbody></table><h2 id="117badcd-bc89-4942-9d19-6a12ca8e2003" class="">Pre-Defined streams</h2><ol type="1" id="0638cf59-6d01-47ae-b2c1-ac33b80acc0a" class="numbered-list" start="1"><li><strong>Standard Input:</strong><ul id="403f9656-6ef7-4679-a03f-c702ad1ebf08" class="bulleted-list"><li style="list-style-type:disc">This stream is used for reading input from the user or from another program.</li></ul><ul id="06d38cef-6285-43cb-ad9d-deeb5237782c" class="bulleted-list"><li style="list-style-type:disc">It is represented by <code>stdin</code>.</li></ul></li></ol><ol type="1" id="8864281a-33ac-4e24-bb93-ba65480c3dd7" class="numbered-list" start="2"><li><strong>Standard Output:</strong><ul id="774ac3d6-5094-435f-a1f0-4db7042c0681" class="bulleted-list"><li style="list-style-type:disc">This stream is used for writing output to the console or terminal.</li></ul><ul id="c552343a-8ea9-4717-8c2a-8a04b6164525" class="bulleted-list"><li style="list-style-type:disc">It is represented by <code>stdout</code>.</li></ul></li></ol><ol type="1" id="3fd14c30-0aff-4dd0-b3db-c28a4a13d1da" class="numbered-list" start="3"><li><strong>Standard Error:</strong><ul id="39c88d86-59ff-4336-b049-5ccee6716a80" class="bulleted-list"><li style="list-style-type:disc">This stream is used for writing error messages to the console or terminal.</li></ul><ul id="67a0da97-b886-456b-acbe-1d5e6cd85a16" class="bulleted-list"><li style="list-style-type:disc">It is represented by <code>stderr</code>.</li></ul></li></ol><h2 id="cbfd91fb-b5bf-4c81-93b3-e08c882fd542" class="">Namespace</h2><p id="d2d2a52a-e250-4ae7-a267-e25b15277c90" class="">A namespace is a feature that allows you to organize code into separate logical units to avoid naming conflicts. It provides a way to group related code elements, such as variables, functions, and classes, under a specific name. This helps in preventing naming collisions, especially in larger projects where different parts of the code may have similar or identical names.</p><p id="58adbb6b-49d8-4211-9e2b-1e3177d17cc9" class="">They are declared using the <code>namespace</code> keyword, followed by the namespace name and a block of code.</p><h3 id="74fd13af-7d53-4e85-a8e0-cff716c91520" class="">Passing Arguments</h3><p id="a6c05240-521a-4d65-afbe-0410d6bca903" class="">1. <strong>Passing by Value:</strong><br/>    ◦ Arguments are copied into the function&#x27;s parameters.<br/>    ◦ Changes to parameters do not affect the original values.<br/></p><p id="b885d0ff-5a72-40d3-a4fe-fa832edb7607" class="">2. <strong>Passing by Reference:</strong><br/>    ◦ Function receives references to the original variables.<br/>    ◦ Changes to parameters directly affect the original values.<br/></p><p id="c94f2e16-7380-4d5a-9618-b2671987a87e" class="">3. <strong>Passing by Pointer:</strong><br/>    ◦ Function receives pointers to the memory addresses of variables.<br/>    ◦ Allows direct manipulation of values using pointers.<br/></p><p id="36b02715-d28c-4f5a-9af6-f2faaee433e1" class="">4. <strong>Default Argument Values:</strong><br/>    ◦ Parameters can have default values, enabling omission during function calls.<br/></p><p id="2ff28bfd-51af-43ff-b29e-8dfeb37af20a" class="">5. <strong>Passing Arrays:</strong><br/>    ◦ Arrays are usually passed by reference or as pointers to their first elements.<br/></p><p id="6d1473ff-5db5-4c1f-bd71-45a695572c12" class="">6. <strong>Passing Objects:</strong><br/>    ◦ Objects can be passed by value or by reference, depending on the desired behavior.<br/></p><p id="4a779548-1085-421c-b60f-1b1214bfa0e1" class="">7. <strong>Passing Constant Arguments:</strong><br/>    ◦ Parameters marked as <br/><code>const</code> prevent modification of the original values.</p><p id="edff6328-1786-4369-9aa1-5c28d2d86698" class="">8. <strong>Passing Arguments in Constructors:</strong><br/>    ◦ Constructors of classes can receive arguments during object creation.<br/></p><p id="c8fbb028-7c1f-4cc9-8dd9-0dd5a85af7d4" class="">9. <strong>Passing Arguments in Function Templates:</strong><br/>    ◦ Function templates can accept arguments of various types, promoting generic programming.<br/></p><h3 id="e181075d-668b-4a8d-8a44-0bdb4967af9f" class="">Inline function</h3><p id="ade8809e-2615-42ca-b031-49731d657a70" class=""><strong>Declaration:</strong></p><ul id="07b0167f-0eee-4649-8a5a-922f9b7095f7" class="bulleted-list"><li style="list-style-type:disc">An inline function is typically declared in the same way as a regular function but with the <code>inline</code> keyword preceding the function declaration.</li></ul><p id="03f4992a-5d62-4f51-88c5-be166c83c972" class=""><strong>Advantages:</strong><div class="indented"><ul id="4fbfce93-e3d8-4753-90a3-4d36fcd6324c" class="bulleted-list"><li style="list-style-type:disc"><strong>Reduced Function Call Overhead:</strong> Inlining eliminates the overhead of function calls, as the compiler inserts the function&#x27;s code directly at the call site.</li></ul><ul id="36c19182-b379-4284-8bdf-cb2940982b7f" class="bulleted-list"><li style="list-style-type:disc"><strong>Performance Improvement:</strong> Can result in improved performance for small, frequently called functions.</li></ul></div></p><p id="92d2b9ca-0174-4f64-b91a-50b02a9b22ee" class=""><strong>Limitations:</strong><div class="indented"><ul id="8f6f7999-7819-4a4a-bcde-109976bf39b7" class="bulleted-list"><li style="list-style-type:disc"><strong>Size Increase:</strong> Inlining may lead to larger code size due to duplicated code at each call site.</li></ul><ul id="bd3b7b35-61fa-4521-99ee-3a4255462fdf" class="bulleted-list"><li style="list-style-type:disc"><strong>Compiler Decision:</strong> The compiler decides whether to honor the <code>inline</code> keyword; it may choose not to inline a function.</li></ul></div></p><p id="a0cc879c-4f32-43cf-a7e7-a546a654c438" class=""><strong>Guidelines:</strong><div class="indented"><ul id="4310bdc6-d173-42ed-9239-b1c2102a8f47" class="bulleted-list"><li style="list-style-type:disc"><strong>Short Functions:</strong> Inline functions are most effective for short, simple functions.</li></ul><ul id="897aa74b-6596-4bc9-bc51-fa2431251bd8" class="bulleted-list"><li style="list-style-type:disc"><strong>Avoid in Large Functions:</strong> Avoid marking large functions as inline to prevent code bloat.</li></ul><ul id="866eb319-bb1b-4cb1-a027-54e61d986dc6" class="bulleted-list"><li style="list-style-type:disc"><strong>Use Profiling:</strong> Inline functions should be used judiciously and based on profiling results to ensure actual performance gains.</li></ul></div></p><h3 id="31f6dc76-e6dc-4bfb-ac3e-caac319cd09e" class="">Function overloading</h3><p id="6c0c2618-a099-4382-a2fb-86d74d555c7a" class="">Function overloading in C++ allows multiple functions in the same scope to have the same name but with different parameter lists. The compiler determines the correct function to call based on the number and types of arguments provided. Function overloading enhances code readability, flexibility, and reusability.</p><p id="14b0ba3c-a90c-43b8-b56f-fa5678493316" class=""><strong>Key Points:</strong></p><ol type="1" id="1c3278cd-819f-4e72-8605-2d7145fa4134" class="numbered-list" start="1"><li><strong>Same Name, Different Signatures:</strong><ul id="4b6410c3-cb98-4e9c-a2ff-5b90bd5e417c" class="bulleted-list"><li style="list-style-type:disc">Functions with the same name but different parameter lists, including a different number or type of parameters.</li></ul></li></ol><ol type="1" id="563965a0-1e66-49f0-9690-77de44306a5e" class="numbered-list" start="2"><li><strong>Advantages:</strong><ul id="52fc73fe-eca2-416e-bb35-b154b72bef60" class="bulleted-list"><li style="list-style-type:disc"><strong>Readability:</strong> Provides a clear and intuitive interface by using the same function name for related operations.</li></ul><ul id="4e745b88-dd54-4c84-b6f9-c14abca34ed1" class="bulleted-list"><li style="list-style-type:disc"><strong>Flexibility:</strong> Allows functions to handle different types of data or perform slightly different tasks.</li></ul><ul id="44a2f254-2cef-44d4-8882-dd4663357dbc" class="bulleted-list"><li style="list-style-type:disc"><strong>Default Arguments:</strong> Function overloading can work with default argument values.</li></ul></li></ol><ol type="1" id="d84bcfb5-65ae-4949-be6d-fcdaa4a07518" class="numbered-list" start="3"><li><strong>Conditions for Overloading:</strong><ul id="98f554da-9b14-42e3-a77f-f5aaeaf1004d" class="bulleted-list"><li style="list-style-type:disc">Functions must have the same name.</li></ul><ul id="e825ea79-f65a-4510-95f1-9af157bfdbd2" class="bulleted-list"><li style="list-style-type:disc">Functions must have different parameter lists (number, type, or both).</li></ul><ul id="698893c7-22a9-4c43-85f6-acf3827de274" class="bulleted-list"><li style="list-style-type:disc">Return type alone is not sufficient for overloading.</li></ul></li></ol></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

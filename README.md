@@ -13,7 +13,7 @@ This repository is your comprehensive guide to learning and mastering C++. Organ
 7. [Files](#)
 8. [Exception Handling](#)
 9. [Generic Programming with Templates](#)
-10.[Standard Template Library (STL)](#)
+10. [Standard Template Library (STL)](#)
 
 ## C++ Topics
 

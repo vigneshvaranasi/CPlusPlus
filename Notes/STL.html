@@ -1,0 +1,679 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Standard Template Library (STL)</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="dffabdab-b97b-46b0-addb-e9fcc8114eb8" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="https://www.notion.so/icons/code_yellow.svg"/></div><h1 class="page-title">Standard Template Library (STL)</h1><p class="page-description"></p></header><div class="page-body"><p id="13f80a3c-cc1b-4b33-a7fb-48c6d288e60e" class="">The Standard Template Library (STL) is a powerful set of C++ template classes to provide general-purpose classes and functions with templates that implement many popular and commonly used algorithms and data structures like vectors, lists, queues, and stacks.</p><h2 id="4b8ca7f7-6e17-4cc4-9779-0e1101aeee99" class=""><span style="border-bottom:0.05em solid">Components of the STL</span></h2><h3 id="dd4caf38-30f7-46c5-9395-ba00082ceb90" class="">1. Containers:</h3><ul id="b20f650f-4985-4b28-907b-e47aa9bd9e0c" class="bulleted-list"><li style="list-style-type:disc">Containers are objects that store collections of elements. They can be categorized into sequence containers and associative containers.</li></ul><ul id="eb142412-7e71-40d7-83ba-6993a3f209f9" class="bulleted-list"><li style="list-style-type:disc"><strong>Sequence Containers:</strong> vector, list, deque, array.</li></ul><ul id="68db993d-7f8a-4e61-a39b-6f13bc758d9d" class="bulleted-list"><li style="list-style-type:disc"><strong>Associative Containers:</strong> set, map, multiset, multimap.</li></ul><h3 id="887d9490-6fd7-4ea1-9a5f-07c6111c7fe8" class="">2. Algorithms:</h3><ul id="abf8f8e6-84b7-44ab-94f7-1d7a1870ab82" class="bulleted-list"><li style="list-style-type:disc">Algorithms are a set of predefined functions that operate on containers and provide operations like sorting, searching, and modifying elements.</li></ul><ul id="136e9e68-b8d1-4524-924e-169112d2e073" class="bulleted-list"><li style="list-style-type:disc">Examples include <code>sort</code>, <code>find</code> etc.</li></ul><h3 id="4d9c5343-1dc7-4d83-83cb-24f6b56ef933" class="">3. Iterators:</h3><ul id="24bcc104-b32d-4de2-a013-87e5d7aa7a1a" class="bulleted-list"><li style="list-style-type:disc">Iterators are objects that allow the traversal of elements in a container.</li></ul><ul id="2dbad6be-4d11-4a61-a5b5-f959e541eb1c" class="bulleted-list"><li style="list-style-type:disc">Categories include input iterators, output iterators, forward iterators, bidirectional iterators, and random access iterators.</li></ul><h3 id="45a532ac-5c0a-44a0-b928-fd908cb7481c" class="">4. Function Objects (Functors):</h3><ul id="20e45b75-044d-4909-8d2a-cc084761ae84" class="bulleted-list"><li style="list-style-type:disc">Function objects are objects that behave like functions. They are often used with algorithms.</li></ul><ul id="c4e0f458-2282-4dd5-8f03-e3b6f4f0aef2" class="bulleted-list"><li style="list-style-type:disc">Examples include <code>less</code>, <code>greater</code>, and user-defined functors.</li></ul><p id="79718399-3072-44fe-ba1c-35e0f2f7e112" class="">
+</p><h2 id="49f9e9d1-52f6-4ddf-8956-86d3f2fd23ed" class=""><span style="border-bottom:0.05em solid">Sequence Containers</span></h2><h2 id="f1ac2ac4-dd76-49f7-aa50-65ca2182b555" class=""><span style="border-bottom:0.05em solid">Vector</span></h2><ul id="0a99f45d-4a94-46c1-b57b-d42fed796eb1" class="bulleted-list"><li style="list-style-type:disc">Dynamic array with automatic resizing.</li></ul><ul id="00aa7547-f891-4106-a027-e2b63947850a" class="bulleted-list"><li style="list-style-type:disc">Efficient random access (O(1)) and dynamic resizing.</li></ul><ul id="af4d59e3-4f98-4cb9-907b-5a3bf0121ca6" class="bulleted-list"><li style="list-style-type:disc">Suitable for scenarios where elements are frequently accessed and inserted at the end.</li></ul><ul id="dfeac251-9091-4fcd-9f20-d566ceafc3de" class="bulleted-list"><li style="list-style-type:disc">Syntax:<code>vector &lt;datatype&gt; vectorname;</code></li></ul><ul id="f9a45862-90dc-480a-b751-e87ad662519c" class="bulleted-list"><li style="list-style-type:disc">Header File:<code> #include&lt;vector&gt;</code></li></ul><ol type="1" id="b381eb68-4342-41bf-8480-2675c56f1943" class="numbered-list" start="1"><li><strong>Modifiers:</strong><ul id="38e378c1-d5fa-4941-99d1-56ea8fd40895" class="bulleted-list"><li style="list-style-type:disc"><code>push_back(val)</code>: Adds an element to the end.</li></ul><ul id="a1cf9919-2f5d-4300-bfeb-075bb966cf49" class="bulleted-list"><li style="list-style-type:disc"><code>pop_back()</code>: Removes the last element.</li></ul><ul id="e19cd935-e7b6-4563-927d-870bad4b679a" class="bulleted-list"><li style="list-style-type:disc"><code>insert(iterator pos, val)</code>: Inserts an element at the specified position.</li></ul><ul id="b8a92eb7-a585-45df-b39d-c3d3caf025e1" class="bulleted-list"><li style="list-style-type:disc"><code>erase(iterator pos)</code>: Removes the element at the specified position.</li></ul></li></ol><ol type="1" id="19c565bd-8b6f-4ac1-a5e3-8dcc4515dea6" class="numbered-list" start="2"><li><strong>Capacity:</strong><ul id="c47c69ff-a0e2-44e6-8857-7eac5d419be1" class="bulleted-list"><li style="list-style-type:disc"><code>size()</code>: Returns the number of elements.</li></ul><ul id="bd55eb9c-d163-4fb8-9176-038c7c7d6046" class="bulleted-list"><li style="list-style-type:disc"><code>capacity()</code>: Returns the size of the allocated storage capacity.</li></ul><ul id="440a32a7-6c0b-4e24-86cf-05e01f182f72" class="bulleted-list"><li style="list-style-type:disc"><code>resize(size_type n)</code>: Resizes the container to contain <code>n</code> elements.</li></ul><ul id="3341f267-a46f-4ffb-8b2f-b7db3914a193" class="bulleted-list"><li style="list-style-type:disc"><code>reserve(size_type n)</code>: Requests that the vector capacity be at least <code>n</code>.</li></ul></li></ol><ol type="1" id="a98f1e95-0b01-4a1e-bcdb-79df532a5e11" class="numbered-list" start="3"><li><strong>Accessors:</strong><ul id="ff4b8209-d25c-4909-989a-b676f19e5a0f" class="bulleted-list"><li style="list-style-type:disc"><code>front()</code>: Returns a reference to the first element.</li></ul><ul id="a33d7000-6c18-4910-bb9d-19b40bbe39c5" class="bulleted-list"><li style="list-style-type:disc"><code>back()</code>: Returns a reference to the last element.</li></ul><ul id="9ce1667a-437d-4d4d-81c7-dd18e06dbcb4" class="bulleted-list"><li style="list-style-type:disc"><code>data()</code>: Returns a pointer to the underlying array.</li></ul></li></ol><h2 id="1d984a02-850f-43bd-a2d7-eb78d310644e" class=""><span style="border-bottom:0.05em solid">List</span></h2><ul id="a0b3c92d-601f-4b1a-8733-763c0502ec26" class="bulleted-list"><li style="list-style-type:disc">Doubly-linked list.</li></ul><ul id="49b0d31f-04fb-490c-bdf6-74395011b4c2" class="bulleted-list"><li style="list-style-type:disc">Efficient insertion and deletion anywhere in the list (O(1)).</li></ul><ul id="feb62c62-6b31-478c-8381-888af9a5df56" class="bulleted-list"><li style="list-style-type:disc"> Suitable for scenarios where frequent insertions and deletions at various positions are required.</li></ul><ul id="0bfc6210-2bb9-42ec-8d2c-ab25da3beac7" class="bulleted-list"><li style="list-style-type:disc">Syntax:<code>list &lt;datatype&gt; listname;</code></li></ul><ul id="99649fae-9722-4e16-bde4-5ea5aaec03f1" class="bulleted-list"><li style="list-style-type:disc">Header File:<code> #include&lt;list&gt;</code></li></ul><ol type="1" id="265f27ce-298a-403d-aa8b-9c79896e0127" class="numbered-list" start="1"><li><strong>Modifiers:</strong><ul id="9f8adc6e-023f-4290-804a-df53d557842c" class="bulleted-list"><li style="list-style-type:disc"><code>push_back(val)</code>: Adds an element to the end.</li></ul><ul id="3163e573-0357-4666-a492-e2ca8728d581" class="bulleted-list"><li style="list-style-type:disc"><code>pop_back()</code>: Removes the last element.</li></ul><ul id="1e1ae3ca-8545-479b-8502-4fc97fe36287" class="bulleted-list"><li style="list-style-type:disc"><code>push_front(val)</code>: Adds an element to the beginning.</li></ul><ul id="0565b673-a4d0-4b4b-a631-d61d7565a8bf" class="bulleted-list"><li style="list-style-type:disc"><code>pop_front()</code>: Removes the first element.</li></ul><ul id="c950d5b4-7105-4d34-9457-b888543842a6" class="bulleted-list"><li style="list-style-type:disc"><code>insert(iterator pos, val)</code>: Inserts an element at the specified position.</li></ul><ul id="02e27551-4b4c-4934-9041-4e7799facab1" class="bulleted-list"><li style="list-style-type:disc"><code>erase(iterator pos)</code>: Removes the element at the specified position.</li></ul></li></ol><ol type="1" id="02c99d29-6ca2-4a1d-a323-5c3814e0b0b1" class="numbered-list" start="2"><li><strong>Operations:</strong><ul id="9d86b552-6915-428e-b1d5-e81ddccee99d" class="bulleted-list"><li style="list-style-type:disc"><code>splice(iterator pos, x)</code>: Transfers elements from another list at the specified position.</li></ul><ul id="cb879c89-e62a-4b1b-bdc3-66ff1ae99502" class="bulleted-list"><li style="list-style-type:disc"><code>merge(x)</code>: Merges sorted lists into the current list.</li></ul><ul id="1fb0da55-0117-4b4b-8e6b-b6a0ea19345c" class="bulleted-list"><li style="list-style-type:disc"><code>remove(val)</code>: Removes all elements with the specified value.</li></ul><ul id="0d3fea33-a766-4d1f-978b-c37c71484ab9" class="bulleted-list"><li style="list-style-type:disc"><code>reverse()</code>: Reverses the order of elements.</li></ul><ul id="bc603d6b-175e-4ebf-8717-186b8aabce6b" class="bulleted-list"><li style="list-style-type:disc"><code>sort()</code>: Sorts the elements.</li></ul></li></ol><ol type="1" id="2ee91939-4b55-4cf9-b945-35590d4cc085" class="numbered-list" start="3"><li><strong>Capacity:</strong><ul id="90da0f1e-ce8a-443b-b013-c5ddd0bc655b" class="bulleted-list"><li style="list-style-type:disc"><code>size()</code>: Returns the number of elements.</li></ul><ul id="eae60e65-a6ce-416f-a92d-aadfc7c8d285" class="bulleted-list"><li style="list-style-type:disc"><code>empty()</code>: Checks whether the list is empty.</li></ul></li></ol><ol type="1" id="e39995af-50cb-4c77-a0a1-5a3f96bacb05" class="numbered-list" start="4"><li><strong>Iterators:</strong><ul id="9a2f8304-6801-449e-917c-94c6490ad323" class="bulleted-list"><li style="list-style-type:disc"><code>begin()</code>, <code>end()</code>: Returns iterators to the beginning and end.</li></ul><ul id="964aa7a2-45f1-43ce-9eab-8b242543d346" class="bulleted-list"><li style="list-style-type:disc"><code>rbegin()</code>, <code>rend()</code>: Returns reverse iterators to the reverse beginning and end.</li></ul></li></ol><h2 id="cbc2775d-2144-4a06-b876-b60ce5dcff71" class=""><span style="border-bottom:0.05em solid">Associative Containers</span></h2><h3 id="9cce7713-4861-4694-9534-fe58bf9d18a8" class=""><span style="border-bottom:0.05em solid">Set</span></h3><ul id="50a1784a-9c76-43dd-979f-345e27330113" class="bulleted-list"><li style="list-style-type:disc">Ensures uniqueness and maintains elements in ascending order.</li></ul><ul id="15d6baaf-4e9c-4e9c-8357-982a0d8dc4ca" class="bulleted-list"><li style="list-style-type:disc">Efficient search, insertion, and deletion operations (O(log n)).</li></ul><ul id="37c1e8af-0d36-4c13-a19d-9aca4a8ba141" class="bulleted-list"><li style="list-style-type:disc">Suitable for scenarios where fast search operations and maintaining order are important.</li></ul><ul id="22cbf7fa-b882-458e-b382-ea6649ae22f7" class="bulleted-list"><li style="list-style-type:disc">Syntax: <code>set &lt;datatype&gt; setname;</code></li></ul><ul id="ea4387f1-9713-401c-b66b-cf26dffa63aa" class="bulleted-list"><li style="list-style-type:disc">Header File: <code>#include&lt;set&gt;</code></li></ul><ol type="1" id="d2cdfba2-bd0f-4431-acbd-4e24d515c4a0" class="numbered-list" start="1"><li><strong>Modifiers:</strong><ul id="1650f50c-9c1c-446f-b53f-bc8e6f70d5ad" class="bulleted-list"><li style="list-style-type:disc"><code>insert(val)</code>: Inserts an element.</li></ul><ul id="95b004e0-a829-4560-ad0d-307b1d92dcfd" class="bulleted-list"><li style="list-style-type:disc"><code>erase(iterator pos)</code>: Removes the element at the specified position.</li></ul><ul id="3693d988-354d-4a21-903f-bce3ec2e92a6" class="bulleted-list"><li style="list-style-type:disc"><code>erase(val)</code>: Removes the element with the specified value.</li></ul><ul id="2256b6f1-bb15-4a80-8473-eff9c8c2d3d5" class="bulleted-list"><li style="list-style-type:disc"><code>clear()</code>: Removes all elements from the set.</li></ul></li></ol><ol type="1" id="c6956fa6-d64c-4b72-b226-8425d305f2d2" class="numbered-list" start="2"><li><strong>Operations:</strong><ul id="ff91176b-bc4f-4ffb-b536-e6ca7d7e4a58" class="bulleted-list"><li style="list-style-type:disc"><code>find(val)</code>: Finds the iterator to the element with the specified value.</li></ul><ul id="c98e1dc2-2ef1-4c9e-9220-6df7fdd03c0a" class="bulleted-list"><li style="list-style-type:disc"><code>count(val)</code>: Counts the number of elements with the specified value.</li></ul></li></ol><ol type="1" id="fd3be557-761d-44f9-8134-639fa9a09ea2" class="numbered-list" start="3"><li><strong>Iterators:</strong><ul id="28fb0569-cd0e-43db-ba96-a7532e9e6885" class="bulleted-list"><li style="list-style-type:disc"><code>begin()</code>, <code>end()</code>: Returns iterators to the beginning and end.</li></ul></li></ol><h3 id="89df434c-13ea-4768-bb15-23ff04c2e972" class=""><span style="border-bottom:0.05em solid">Map</span></h3><ul id="089f59a7-1698-46ef-ae0d-214ca752edcb" class="bulleted-list"><li style="list-style-type:disc">Stores key-value pairs where keys are unique and ordered.</li></ul><ul id="5d62e392-0d21-4cde-93cf-d43167d26dc1" class="bulleted-list"><li style="list-style-type:disc">Suitable for scenarios where key-based search operations and maintaining order by key are important.</li></ul><ul id="ea91a10c-5d8b-4859-a389-10265f39108c" class="bulleted-list"><li style="list-style-type:disc">Syntax: <code>map &lt;key_type, value_type&gt; mapname;</code></li></ul><ul id="02d6aeba-e80d-4a2a-93ee-0e7a1d3759c9" class="bulleted-list"><li style="list-style-type:disc">Header File: <code>#include&lt;map&gt;</code></li></ul><ol type="1" id="6ceacfec-7433-4d78-a858-c14271edf3fd" class="numbered-list" start="1"><li><strong>Modifiers:</strong><ul id="faaa42d1-a0b7-4cc9-b79d-8d0d90a073de" class="bulleted-list"><li style="list-style-type:disc"><code>insert(Key,val)</code>: Inserts a key-value pair.</li></ul><ul id="93839979-3ed4-4584-a0b6-a246d9a428af" class="bulleted-list"><li style="list-style-type:disc"><code>erase(iterator pos)</code>: Removes the element at the specified position.</li></ul><ul id="7c7a3fef-df98-4a9d-ae53-39d607602a4e" class="bulleted-list"><li style="list-style-type:disc"><code>erase(key)</code>: Removes the element with the specified key.</li></ul><ul id="7b4b088d-2e60-4dae-9750-1cb66837976c" class="bulleted-list"><li style="list-style-type:disc"><code>clear()</code>: Removes all elements from the map.</li></ul></li></ol><ol type="1" id="9a2bb8fe-25d9-442f-84d5-36d1e4589baf" class="numbered-list" start="2"><li><strong>Operations:</strong><ul id="621fd783-4203-4a56-938e-142b9e43c177" class="bulleted-list"><li style="list-style-type:disc"><code>find(key)</code>: Finds the iterator to the element with the specified key.</li></ul></li></ol><ol type="1" id="c0607c3b-9a6e-4151-9d15-6b360c545e08" class="numbered-list" start="3"><li><strong>Iterators:</strong><ul id="504028c1-45b6-4aa7-81a7-3cb015fe3cd2" class="bulleted-list"><li style="list-style-type:disc"><code>begin()</code>, <code>end()</code>: Returns iterators to the beginning and end.</li></ul></li></ol><h2 id="94e3c7c1-4418-4b37-ba5e-d7b1c8b88fbe" class=""><span style="border-bottom:0.05em solid">Algorithms provided by the STL</span></h2><p id="551b9803-3ec4-4ef5-a2ae-68719b778b03" class="">The Standard Template Library (STL) in C++ provides a rich set of algorithms that operate on various containers. These algorithms offer generic implementations for common tasks, such as searching, sorting, and modifying elements.</p><ul id="f675bb8b-3383-46e5-9b36-58860b241c6b" class="bulleted-list"><li style="list-style-type:disc"><strong>Non-modifying Sequence Operations:</strong><ul id="7f9316dc-f604-422f-b6b2-ff6322dbc3a7" class="bulleted-list"><li style="list-style-type:circle"><code>count</code> : Count occurrences of elements.</li></ul><ul id="30f590ed-046e-4ec9-bfdc-870e0158925a" class="bulleted-list"><li style="list-style-type:circle"><code>find</code> : Find the first occurrence of an element.</li></ul><ul id="b0dbbceb-0ff7-4411-8110-07db3baac9f1" class="bulleted-list"><li style="list-style-type:circle"><code>search</code> : Search for a subsequence or the last occurrence of a subsequence.</li></ul></li></ul><ul id="79243839-4e6a-4c32-8f0e-33192965c7ff" class="bulleted-list"><li style="list-style-type:disc"><strong>Modifying Sequence Operations:</strong><ul id="2175fb22-87f6-44ae-be92-23a919f3e37b" class="bulleted-list"><li style="list-style-type:circle"><code>copy</code> : Copy elements from one range to another.</li></ul><ul id="1276fb55-02cf-4e08-885e-1236e3e035ed" class="bulleted-list"><li style="list-style-type:circle"><code>replace</code> : Replace occurrences of a value.</li></ul></li></ul><ul id="db68cc69-7332-4cdc-878c-da581f8771d4" class="bulleted-list"><li style="list-style-type:disc"><strong>Sorting and Related Operations:</strong><ul id="1ac8821f-f32c-4def-8a9b-2ee91044cee3" class="bulleted-list"><li style="list-style-type:circle"><code>sort</code>: Sort elements in a range .</li></ul><ul id="f752bb7c-c967-4d91-8996-781c5c98be56" class="bulleted-list"><li style="list-style-type:circle"><code>merge</code>: Merge sorted ranges.</li></ul><ul id="0ea0a3b0-dec7-4576-bdf6-23ae753a5ece" class="bulleted-list"><li style="list-style-type:circle"><code>reverse</code>  : Reverse elements in a range.</li></ul></li></ul><ul id="94c6dbd8-8366-44f4-b3e6-34cae61c7178" class="bulleted-list"><li style="list-style-type:disc"><strong>Binary Search Operations:</strong><ul id="1aa8c000-cb8d-4ea3-b7a6-01a3c04b85c2" class="bulleted-list"><li style="list-style-type:circle"><code>binary_search</code>: Check if an element exists in a sorted range.</li></ul><ul id="3ccb85e5-471c-4481-b205-80e7ab42915d" class="bulleted-list"><li style="list-style-type:circle"><code>lower_bound</code>, <code>upper_bound</code>: Find the lower and upper bounds of a value in a sorted range.</li></ul></li></ul><ul id="27186e7e-a5ba-4c1e-84e6-e16abd959afd" class="bulleted-list"><li style="list-style-type:disc"><strong>Min/Max Operations:</strong><ul id="942365d3-2442-4e18-b56b-46c3f02b818e" class="bulleted-list"><li style="list-style-type:circle"><code>min</code>, <code>max</code>: Find the minimum or maximum of two values.</li></ul><ul id="603fb8cf-5e93-43f9-a7bc-18f18d182d60" class="bulleted-list"><li style="list-style-type:circle"><code>min_element</code>, <code>max_element</code>: Find the minimum or maximum element in a range.</li></ul></li></ul><h3 id="ed5aea82-5442-4567-a4cb-4d0df78e90ec" class=""><span style="border-bottom:0.05em solid">Iterators and their role in STL</span></h3><p id="271800a4-d791-4bf2-9290-8b57bb67ceed" class="">Iterators are a fundamental concept in the Standard Template Library (STL) in C++. They act as an abstraction that allows traversing the elements of a container without exposing the underlying implementation details. Iterators provide a uniform interface for accessing elements in different types of containers, making algorithms in the STL generic and versatile.</p><p id="60e44a43-a3a9-4599-855d-a556a63cc9e4" class=""><strong>Roles of Iterators in STL:</strong></p><ol type="1" id="e79d897e-5c9a-47d7-80d3-e9253be5c743" class="numbered-list" start="1"><li><strong>Traversal:</strong><ul id="a106d2e0-c511-44a8-a78f-87bbe5c05ec4" class="bulleted-list"><li style="list-style-type:disc"><strong>Role:</strong> Iterators allow you to traverse the elements of a container sequentially.</li></ul><ul id="25f6e226-4034-45e5-a140-1c4c461db0f4" class="bulleted-list"><li style="list-style-type:disc"><strong>Use:</strong> You can iterate over the entire container or specify a range of elements.</li></ul></li></ol><ol type="1" id="87ffc96d-68d2-4269-bd30-1ba70948bca1" class="numbered-list" start="2"><li><strong>Access to Elements:</strong><ul id="f23f3e34-76b3-4cfe-a8b4-e809f3be9d7d" class="bulleted-list"><li style="list-style-type:disc"><strong>Role:</strong> Iterators provide a means to access individual elements within a container.</li></ul><ul id="9fdf8fdf-4487-43fc-8719-524aa583720a" class="bulleted-list"><li style="list-style-type:disc"><strong>Use:</strong> You can dereference an iterator to obtain the value of the element it points to.</li></ul></li></ol><ol type="1" id="4a476e5a-e2b2-4f6b-9ff8-16170723f711" class="numbered-list" start="3"><li><strong>Insertion and Deletion:</strong><ul id="879648cc-f65c-4b42-aad0-4b6d234c66c2" class="bulleted-list"><li style="list-style-type:disc"><strong>Role:</strong> Iterators enable the insertion and deletion of elements at the position pointed to by the iterator.</li></ul><ul id="878e1480-52a9-4742-b3a9-01f4fcd3913f" class="bulleted-list"><li style="list-style-type:disc"><strong>Use:</strong> You can use iterators with insert and erase operations to modify the container.</li></ul></li></ol><ol type="1" id="5c6f1f0c-82a8-4e7f-b0aa-cdf7b1ad9d39" class="numbered-list" start="4"><li><strong>Range-Based Algorithms:</strong><ul id="2ebffb36-6953-44e8-9bea-49736ae0e25e" class="bulleted-list"><li style="list-style-type:disc"><strong>Role:</strong> Many algorithms in the Standard Template Library (STL) are designed to work with iterators, allowing you to perform various operations on container elements.</li></ul><ul id="a85f8454-75f5-4130-889b-0918e190dcc3" class="bulleted-list"><li style="list-style-type:disc"><strong>Use:</strong> Algorithms like <code>find</code>, <code>sort</code>, and others take iterators as arguments.</li></ul></li></ol><ol type="1" id="474b06f9-e719-415e-876b-5e94be7d4a8d" class="numbered-list" start="5"><li><strong>Generic Programming:</strong><ul id="6181c7f7-8e8f-4445-92d6-ae75e3e1761b" class="bulleted-list"><li style="list-style-type:disc"><strong>Role:</strong> Iterators facilitate generic programming by providing a consistent interface for different container types.</li></ul><ul id="bb0e66eb-fa85-4d3d-928c-205c0000f268" class="bulleted-list"><li style="list-style-type:disc"><strong>Use:</strong> Algorithms that use iterators can be applied to a variety of containers without modification.</li></ul></li></ol><h3 id="8c3c65b9-d1fb-4f28-8c49-db64fcb61bf2" class=""><span style="border-bottom:0.05em solid">Advantages of Iterators:</span></h3><ol type="1" id="747e8770-8afa-4403-8133-a8573aae7315" class="numbered-list" start="1"><li><strong>Traversal of Containers:</strong><ul id="b2683303-52e0-45a4-acd7-2aac152d75b1" class="bulleted-list"><li style="list-style-type:disc">Iterators provide a way to traverse the elements of a container, allowing algorithms to access each element in a sequential manner.</li></ul></li></ol><ol type="1" id="08f16343-5435-4e74-b292-0b9d1d8a2434" class="numbered-list" start="2"><li><strong>Uniform Interface:</strong><ul id="d214b792-e4ee-44f3-bf07-b57b39f4c049" class="bulleted-list"><li style="list-style-type:disc">Regardless of the container type (e.g., vector, list, set), iterators provide a consistent interface for accessing elements, making algorithms generic and reusable.</li></ul></li></ol><ol type="1" id="baf40eac-3ef7-418a-a8c2-c246e15f93a8" class="numbered-list" start="3"><li><strong>Range Specification:</strong><ul id="8ff6bd97-0914-47d4-b8a0-3ee4b3ca3998" class="bulleted-list"><li style="list-style-type:disc">Iterators define ranges, specifying the beginning and end of a sequence. This enables algorithms to operate on specific subsets of elements within a container.</li></ul></li></ol><ol type="1" id="9a9fd345-fbef-4959-b94d-de91b086a92d" class="numbered-list" start="4"><li><strong>Adaptability:</strong><ul id="d848059d-c353-4d46-92c5-f8be4a497b15" class="bulleted-list"><li style="list-style-type:disc">Algorithms in the STL can be applied to any container as long as the container provides the required iterator interface. This adaptability is a key feature of the STL.</li></ul></li></ol><h3 id="0fd554cc-7f71-4d20-aca3-f4b49a446566" class=""><span style="border-bottom:0.05em solid">Applications of the STL</span></h3><p id="ee1c7c33-e0a4-40d4-877b-f2ef6c253bdd" class="">1. Data Structures Implementation<br/>2. Algorithm Development<br/>3. Containers for Storage<br/>4. String Manipulation<br/>5. File I/O Operations<br/>6. Mathematical Computations<br/>7. Graphical User Interface (GUI) Programming<br/>8. Game Development<br/>9. Database Applications<br/>10. Educational Purposes<br/>11. Embedded Systems<br/>12. Networking Applications<br/></p><h3 id="05c15ecf-7da0-4f95-98f2-779219c1f83d" class="">Comparison of Various Containers in STL</h3><table id="848eb72c-bedf-42ca-96b6-20ec3c6ada08" class="simple-table"><tbody><tr id="42b9fe73-2024-4f72-97b8-c697f2349c9e"><td id="gBwz" class=""><strong>Container</strong></td><td id="K}ke" class=""><strong>Description</strong></td><td id="lYbL" class=""><strong>Use Cases</strong></td><td id="Q@?u" class=""><strong>Advantages</strong></td><td id="ZPFU" class="" style="width:146.33334350585938px"><strong>Disadvantages</strong></td></tr><tr id="9eeb4bbf-996f-4bd1-b87a-e75946c7930d"><td id="gBwz" class=""><strong>Vector</strong></td><td id="K}ke" class="">Dynamic array with automatic resizing.</td><td id="lYbL" class="">Frequent random access, dynamic resizing.</td><td id="Q@?u" class="">Efficient random access (O(1)), dynamic resizing.</td><td id="ZPFU" class="" style="width:146.33334350585938px">Insertions/deletions in the middle are inefficient (O(n)).</td></tr><tr id="864dc847-cba1-47b3-b606-82618a9f5375"><td id="gBwz" class=""><strong>List</strong></td><td id="K}ke" class="">Doubly-linked list.</td><td id="lYbL" class="">Frequent insertions/deletions at various positions.</td><td id="Q@?u" class="">Efficient insertions/deletions anywhere (O(1)).</td><td id="ZPFU" class="" style="width:146.33334350585938px">Inefficient random access (O(n)).</td></tr><tr id="8f501631-11c2-4002-beae-5b4f589d06d2"><td id="gBwz" class=""><strong>Set</strong></td><td id="K}ke" class="">Balanced binary search tree (usually Red-Black Tree).</td><td id="lYbL" class="">Maintaining a sorted and unique set of elements.</td><td id="Q@?u" class="">Efficient search, insertion, and deletion (O(log n)).</td><td id="ZPFU" class="" style="width:146.33334350585938px">More memory overhead compared to vectors and lists.</td></tr><tr id="72194e77-b96d-41e8-a843-0365e97f1462"><td id="gBwz" class=""><strong>Map</strong></td><td id="K}ke" class="">Balanced binary search tree (usually Red-Black Tree) storing key-value pairs.</td><td id="lYbL" class="">Associating values with unique keys.</td><td id="Q@?u" class="">Efficient key-based search, insertion, and deletion (O(log n)).</td><td id="ZPFU" class="" style="width:146.33334350585938px">More memory overhead compared to vectors and lists.</td></tr></tbody></table><p id="b9da657d-a3bb-432e-bb66-9c4f952974fd" class="">
+</p><p id="6b1210d0-7769-4c1a-981f-c534397e47db" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

@@ -9,7 +9,7 @@ This repository is your comprehensive guide to learning and mastering C++. Organ
 3. [Constructors and Destructors](https://vigneshvaranasi.github.io/CPlusPlus/Notes/Constructors%20and%20Destructors)
 4. [Operator Overloading](https://vigneshvaranasi.github.io/CPlusPlus/Notes/Operator%20Overloading)
 5. [Inheritance](https://vigneshvaranasi.github.io/CPlusPlus/Notes/Inheritance)
-6. [Binding, Polymorphism, and Virtual Functions](#)
+6. [Polymorphism](https://vigneshvaranasi.github.io/CPlusPlus/Notes/Polymorphism)
 7. [Files](#)
 8. [Exception Handling](#)
 9. [Generic Programming with Templates](#)
@@ -51,7 +51,7 @@ This repository is your comprehensive guide to learning and mastering C++. Organ
     - Inherited and base classes
     - Polymorphism through inheritance
 
-- Binding, Polymorphism, and Virtual Functions
+- Polymorphism
     - Binding in C++
     - Static binding vs. dynamic binding
     - Polymorphism and its types

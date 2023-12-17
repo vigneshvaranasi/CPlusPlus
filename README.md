@@ -12,7 +12,7 @@ This repository is your comprehensive guide to learning and mastering C++. Organ
 6. [Polymorphism](https://vigneshvaranasi.github.io/CPlusPlus/Notes/Polymorphism)
 7. [Files](https://vigneshvaranasi.github.io/CPlusPlus/Notes/Files)
 8. [Exception Handling](https://vigneshvaranasi.github.io/CPlusPlus/Notes/Exception%20Handling)
-9. [Generic Programming with Templates](#)
+9. [Generic Programming with Templates](https://vigneshvaranasi.github.io/CPlusPlus/Notes/Generic%20Programming%20with%20Templates)
 10. [Standard Template Library (STL)](#)
 
 ## C++ Topics

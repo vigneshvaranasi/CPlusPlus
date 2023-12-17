@@ -1,0 +1,689 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Files</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+
+/* 		color: rgb(201, 201, 201);
+		background-color: #000; */
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="9424e528-f49e-473e-8ac4-83f64ab05e70" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">🗃️</span></div><h1 class="page-title">Files</h1><p class="page-description"></p></header><div class="page-body"><p id="711439a4-7cf1-4a46-b2d6-d993e8ba28de" class="">File handling in C++ allows you to work with files on the system, enabling reading from and writing to files. The <code>&lt;fstream&gt;</code> header in C++ provides classes like <code>ifstream</code>, <code>ofstream</code>, and <code>fstream</code> to perform file operations.</p><h2 id="246eec2a-5b3f-439f-a531-f9808949b1e6" class=""><span style="border-bottom:0.05em solid">Steps of File Operations</span></h2><ol type="1" id="a1f54d59-5db2-49b3-952a-1f0bf9103b83" class="numbered-list" start="1"><li><strong>Include Necessary Headers:</strong><ul id="00e7d170-39d3-44d4-9a68-c5207bed94b2" class="bulleted-list"><li style="list-style-type:disc"><code>#include &lt;iostream&gt;</code></li></ul><ul id="82b1e7af-aa4b-4547-8fab-5810616a7154" class="bulleted-list"><li style="list-style-type:disc"><code>#include &lt;fstream&gt;</code></li></ul><ul id="c7f5b811-001d-438b-b195-f0e12ad22e0d" class="bulleted-list"><li style="list-style-type:disc"><code>#include &lt;string&gt;</code></li></ul></li></ol><ol type="1" id="0dd828e1-2dda-4e25-8f32-e2cd04cd7c86" class="numbered-list" start="2"><li><strong>Opening a File:</strong><ul id="06ee76ce-d8ce-49c6-ad50-6d1a8b015e11" class="bulleted-list"><li style="list-style-type:disc">For Writing (Output): <code>ofstream.objectName(&quot;example.txt&quot;);</code></li></ul><ul id="99665a43-86ec-4972-960a-ccb194330e1c" class="bulleted-list"><li style="list-style-type:disc">For Reading (Input): <code>ifstream.objectName(&quot;example.txt&quot;);</code></li></ul><ul id="bde1526b-6a2d-440b-abd0-d7b277dcb0e3" class="bulleted-list"><li style="list-style-type:disc">For Both Reading and Writing: <code>fstream.objectName(&quot;example.txt&quot;,ios::in|ios::out);</code></li></ul></li></ol><ol type="1" id="bfa26bd9-8cee-4e60-b306-c548ebe331c9" class="numbered-list" start="3"><li><strong>Check if the File is Open:</strong><ul id="e688611c-719b-44b3-a63d-06f2c9e0cec9" class="bulleted-list"><li style="list-style-type:disc"><code>if (objectName.is_open()) { /* File is open for writing */ } else { /* Handle error */ }</code></li></ul></li></ol><ol type="1" id="6029dbb9-a6a1-49e1-b46f-00ce30488636" class="numbered-list" start="4"><li><strong>Writing to a File:</strong><ul id="8a411d0c-5611-4cd9-976e-4647cf9b09b3" class="bulleted-list"><li style="list-style-type:disc"><code>objectName &lt;&lt; &quot;Hello, File Handling in C++!&quot;;</code></li></ul></li></ol><ol type="1" id="16aaaf12-15bd-4880-baac-cd5c253c2b01" class="numbered-list" start="5"><li><strong>Reading from a File:</strong><ul id="35612ed2-142d-4d56-ae4a-0083e5ec7efc" class="bulleted-list"><li style="list-style-type:disc"><code>string content;</code></li></ul><ul id="c23a5435-73ef-459c-b37e-5d577777631a" class="bulleted-list"><li style="list-style-type:disc"><code>while (getline(objectName,content)) { /* Process each line */ }</code></li></ul></li></ol><ol type="1" id="41f93cbf-4e76-462e-ac1c-ce8293d37038" class="numbered-list" start="6"><li><strong>Appending to a File:</strong><ul id="60020a85-161e-46ef-8c59-5b472671f2fd" class="bulleted-list"><li style="list-style-type:disc"><code>objectName.open(&quot;example.txt&quot;,ios::app);</code></li></ul><ul id="fb489099-3283-4093-af25-a6401ecd85d6" class="bulleted-list"><li style="list-style-type:disc"><code>objectName &lt;&lt; &quot;Appending content to the file\n&quot;;</code></li></ul></li></ol><ol type="1" id="09fc8d6d-9a5b-463e-affc-255d09c57c1d" class="numbered-list" start="7"><li><strong>Closing the File:</strong><ul id="2e105d0e-70bd-47df-bbf6-ca09e70ea7fc" class="bulleted-list"><li style="list-style-type:disc"><code>objectName.close();</code></li></ul></li></ol><h2 id="93b50b21-aa44-4264-af5d-bd73a024678d" class=""><span style="border-bottom:0.05em solid">File Opening Modes</span></h2><table id="7e27aaea-bca5-43e8-b300-94c4794edc2d" class="simple-table"><tbody><tr id="3df6ca49-0fdc-4891-adfa-66e7d1b50768"><td id=":ipq" class="">Mode Name</td><td id="IDt:" class="">Description</td><td id="Kyqy" class="" style="width:336px">Syntax</td></tr><tr id="cbc34ef0-d3aa-4a40-8ce3-75ff92a61a9f"><td id=":ipq" class=""><code>ios::in</code></td><td id="IDt:" class="">Opens the file for reading.</td><td id="Kyqy" class="" style="width:336px"><code>ifstream objectName(&quot;example.txt&quot;,ios::in);</code></td></tr><tr id="fa199f42-f889-420f-9f11-471ced97e788"><td id=":ipq" class=""><code>ios::out</code></td><td id="IDt:" class="">Opens the file for writing. Truncates existing content.</td><td id="Kyqy" class="" style="width:336px"><code>ofstream objectName(&quot;example.txt&quot;,ios::out);</code></td></tr><tr id="a5efbee1-ca3a-4257-b31f-51cc1a8de8e4"><td id=":ipq" class=""><code>ios::app</code></td><td id="IDt:" class="">Opens the file for writing, appending to existing content.</td><td id="Kyqy" class="" style="width:336px"><code>ofstream objectName(&quot;example.txt&quot;,ios::app);</code></td></tr><tr id="446e0f40-37ca-4733-9fc9-bfa81d57d387"><td id=":ipq" class=""><code>ios::binary</code></td><td id="IDt:" class="">Opens the file in binary mode (for binary data).</td><td id="Kyqy" class="" style="width:336px"><code>ifstream binaryInput(&quot;binary.dat&quot;,ios::binary);</code></td></tr><tr id="8cd4a69a-145c-4173-8647-826f69cf75c9"><td id=":ipq" class=""><code>ios::ate</code></td><td id="IDt:" class="">Positions the file pointer at the end upon opening.</td><td id="Kyqy" class="" style="width:336px"><code>fstream objectName(&quot;example.txt&quot;, ios::in);</code></td></tr><tr id="b72c4eb0-4e35-4723-b513-e964a826aa6f"><td id=":ipq" class=""><code>ios::trunc</code></td><td id="IDt:" class="">Truncates existing content if the file is opened for writing.</td><td id="Kyqy" class="" style="width:336px"><code>ofstream objectName(&quot;example.txt&quot;,ios::trunc);</code></td></tr></tbody></table><p id="7afb00ba-5eaf-43ca-92f1-e35bc1c9e1a9" class="">These modes can be combined using the bitwise OR (<code>|</code>) operator when opening a file with both input and output modes</p><h3 id="dfce57fa-9003-48a9-94dd-ab917b0e46ca" class=""><span style="border-bottom:0.05em solid">End of a File</span></h3><p id="e571fc93-2bdf-4ab7-a63d-51369c88e068" class="">The <code>eof()</code> function returns the non-zero value, when the end of the file is detected, otherwise, it is zero.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="cbdeae2e-2d8c-47be-b74b-6768daab4716" class="code code-wrap"><code class="language-C++">    if (objectName.eof()) {
+        cout &lt;&lt; &quot;Reached the end of the file.&quot; &lt;&lt; endl;
+    }</code></pre><h3 id="c26be116-6b46-4ddd-a099-73309332cd20" class=""><span style="border-bottom:0.05em solid">Checking for Errors during File Opening</span></h3><p id="03e38926-9f69-4861-b21d-59781665855f" class=""><strong>Open File:</strong><div class="indented"><ul id="0d985c6d-100e-4ddb-8dbd-b47b07cdbb1b" class="bulleted-list"><li style="list-style-type:disc">Use the <code>is_open()</code> method of the file stream to check if the file has been successfully opened.</li></ul></div></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="273326a2-5cce-4483-8497-2ffc38389ea8" class="code code-wrap"><code class="language-C++">    if (!objectName.is_open()) {
+        cerr &lt;&lt; &quot;Unable to open the file.&quot; &lt;&lt; endl;
+		}</code></pre><ul id="875b0483-0a68-4416-b511-d761ddd6ec37" class="bulleted-list"><li style="list-style-type:disc">Always close the file stream when you&#x27;re done with file operations using the <code>close()</code> method.</li></ul><ul id="780872d1-a45f-499f-8e8e-76522f7c24eb" class="bulleted-list"><li style="list-style-type:disc">Utilize the <code>cerr</code> stream to output error messages to the standard error stream.</li></ul><h3 id="79a7b44f-5ca3-4f47-bc19-df7e235340f1" class=""><span style="border-bottom:0.05em solid">File Pointers</span></h3><table id="f4a63663-0eaf-4a2f-a32c-a814790f9b5e" class="simple-table"><tbody><tr id="25abac51-0486-4eaf-bb56-39183246c4e9"><td id="eT=;" class="" style="width:105px">Pointer Name</td><td id="mjiD" class="" style="width:222px">Description</td><td id="LCpA" class="" style="width:229px">Syntax for Input File (<code>ifstream</code>)</td><td id="YqOi" class="" style="width:227px">Syntax for Output File (<code>ofstream</code>)</td></tr><tr id="ee61332f-f5db-4a30-bd52-54713bae14a7"><td id="eT=;" class="" style="width:105px"><code>get</code></td><td id="mjiD" class="" style="width:222px">Get pointer for reading characters</td><td id="LCpA" class="" style="width:229px"><code>objectName.get()</code></td><td id="YqOi" class="" style="width:227px">N/A (Not applicable for output streams)</td></tr><tr id="0ba1ca81-f6de-458f-8141-c71d64fb4da3"><td id="eT=;" class="" style="width:105px"><code>put</code></td><td id="mjiD" class="" style="width:222px">Put pointer for writing characters</td><td id="LCpA" class="" style="width:229px">N/A (Not applicable for input streams)</td><td id="YqOi" class="" style="width:227px"><code>objectName.put()</code></td></tr><tr id="5a0963a9-ee70-43c5-85f3-362c09af33f4"><td id="eT=;" class="" style="width:105px"><code>tellg</code></td><td id="mjiD" class="" style="width:222px">Get current get pointer position (input stream)</td><td id="LCpA" class="" style="width:229px"><code>objectName.tellg()</code></td><td id="YqOi" class="" style="width:227px">N/A (Not applicable for output streams)</td></tr><tr id="f6555990-3e20-46b3-94c3-1a3835ee5c1f"><td id="eT=;" class="" style="width:105px"><code>tellp</code></td><td id="mjiD" class="" style="width:222px">Get current put pointer position (output stream)</td><td id="LCpA" class="" style="width:229px">N/A (Not applicable for input streams)</td><td id="YqOi" class="" style="width:227px"><code>objectName.tellp()</code></td></tr><tr id="06888519-f3cd-4c19-b7cb-4fc11b716b11"><td id="eT=;" class="" style="width:105px"><code>seekg</code></td><td id="mjiD" class="" style="width:222px">Set the get pointer position (input stream)</td><td id="LCpA" class="" style="width:229px"><code>objectName.seekg(offset, mode)</code></td><td id="YqOi" class="" style="width:227px">N/A (Not applicable for output streams)</td></tr><tr id="26e09b43-8199-43b0-8afd-af5e0b3e4ec3"><td id="eT=;" class="" style="width:105px"><code>seekp</code></td><td id="mjiD" class="" style="width:222px">Set the put pointer position (output stream)</td><td id="LCpA" class="" style="width:229px">N/A (Not applicable for input streams)</td><td id="YqOi" class="" style="width:227px"><code>objectName.seekp(offset, mode)</code></td></tr></tbody></table><ul id="d1dd7e55-c42c-49d7-9919-b05e7f9b8d73" class="bulleted-list"><li style="list-style-type:disc"><code>offset</code>: Number of characters to move.</li></ul><ul id="ebce780c-735e-4a79-b977-e9850c6f6c33" class="bulleted-list"><li style="list-style-type:disc"><code>mode</code>: Positioning mode (<code>ios::beg</code> for the beginning, <code>ios::cur</code> for the current position, <code>ios::end</code> for the end).</li></ul><h3 id="6c540f90-6fd0-4081-926b-78692952e774" class=""><span style="border-bottom:0.05em solid">File Manipulators</span></h3><table id="347b3c4c-851f-4db6-bf90-4f35cc555253" class="simple-table"><tbody><tr id="8880c652-c0b8-4453-9968-f368b7957ab8"><td id="kEqp" class="" style="width:156px">Manipulator</td><td id="l;t{" class="" style="width:284.21875px">Description</td><td id="FDv&gt;" class="" style="width:304px">Example</td></tr><tr id="216f61bb-d867-4be2-94a6-a46d1a728780"><td id="kEqp" class="" style="width:156px"><code>setw(int n)</code></td><td id="l;t{" class="" style="width:284.21875px">Sets the field width for the next input or output operation.</td><td id="FDv&gt;" class="" style="width:304px"><code>objectName &lt;&lt; setw(10) &lt;&lt; &quot;Hello&quot;;</code></td></tr><tr id="7227a469-af1d-43ad-9edc-f632a4f36074"><td id="kEqp" class="" style="width:156px"><code>setprecision(int n)</code></td><td id="l;t{" class="" style="width:284.21875px">Sets the number of digits to display after the decimal point for floating-point values.</td><td id="FDv&gt;" class="" style="width:304px"><code>objectName &lt;&lt; setprecision(2) &lt;&lt; 3.14159;</code></td></tr><tr id="5d177de7-b495-4463-9998-a913f2c62151"><td id="kEqp" class="" style="width:156px"><code>fixed</code></td><td id="l;t{" class="" style="width:284.21875px">Ensures that floating-point numbers are displayed in fixed-point notation.</td><td id="FDv&gt;" class="" style="width:304px"><code>objectName &lt;&lt; fixed &lt;&lt; 123.456;</code></td></tr><tr id="43f9628c-c824-4073-9ed2-13a250a52700"><td id="kEqp" class="" style="width:156px"><code>scientific</code></td><td id="l;t{" class="" style="width:284.21875px">Ensures that floating-point numbers are displayed in scientific notation.</td><td id="FDv&gt;" class="" style="width:304px"><code>objectName &lt;&lt;scientific &lt;&lt; 123.456;</code></td></tr><tr id="24ba4ddb-2871-41f3-a177-7bf606cc5144"><td id="kEqp" class="" style="width:156px"><code>left</code></td><td id="l;t{" class="" style="width:284.21875px">Aligns output to the left within the specified field width.</td><td id="FDv&gt;" class="" style="width:304px"><code>objectName &lt;&lt; setw(10) &lt;&lt; left &lt;&lt; &quot;Left&quot;;</code></td></tr><tr id="246c4e5d-39cd-427b-8d93-b516a9402d87"><td id="kEqp" class="" style="width:156px"><code>right</code></td><td id="l;t{" class="" style="width:284.21875px">Aligns output to the right within the specified field width.</td><td id="FDv&gt;" class="" style="width:304px"><code>objectName &lt;&lt; setw(10) &lt;&lt;right &lt;&lt; &quot;Right&quot;;</code></td></tr><tr id="7a159c56-dcf8-40d4-bb7e-8737b19536be"><td id="kEqp" class="" style="width:156px"><code>endl</code></td><td id="l;t{" class="" style="width:284.21875px">Inserts a newline character and flushes the output buffer.</td><td id="FDv&gt;" class="" style="width:304px"><code>objectName &lt;&lt; &quot;Line 1&quot; &lt;&lt; endl;</code></td></tr></tbody></table><p id="e63d40ee-72dd-45bd-af63-5c3e0f7b2cbd" class="">
+</p><p id="79b5aa14-0ddf-4c5e-b8a9-ebc9e5c794d9" class="">
+</p><p id="b7ecc283-bbb8-49a7-8560-72cef9636f9f" class="">
+</p><p id="84708a01-85e8-4aa9-bab6-1dfbef805475" class="">
+</p><p id="ced00db6-3909-4c08-944d-af6696263625" class="">
+</p><p id="15a6b48c-5e75-44a8-94ca-025fc817f484" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

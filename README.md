@@ -8,7 +8,7 @@ This repository is your comprehensive guide to learning and mastering C++. Organ
 2. [Classes and Objects](https://vigneshvaranasi.github.io/CPlusPlus/Notes/Classes%20and%20Objects)
 3. [Constructors and Destructors](https://vigneshvaranasi.github.io/CPlusPlus/Notes/Constructors%20and%20Destructors)
 4. [Operator Overloading](https://vigneshvaranasi.github.io/CPlusPlus/Notes/Operator%20Overloading)
-5. [Inheritance](#)
+5. [Inheritance](https://vigneshvaranasi.github.io/CPlusPlus/Notes/Inheritance)
 6. [Binding, Polymorphism, and Virtual Functions](#)
 7. [Files](#)
 8. [Exception Handling](#)

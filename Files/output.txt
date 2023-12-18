@@ -1,0 +1,19 @@
+      Name       Age     Score
+   Vignesh        25      95.5
+     Eswar        30        98
+ Fakruddin        22      91.2
+
+Precision13.14
+
+Fixed:13.1400
+
+Fixed:13.1915
+
+Scientific:1.3140e+01
+
+Scientific :1.3191e+01
+
+Name      Age            Score
+Vignesh   25        9.5500e+01
+Eswar     30        9.8000e+01
+Fakruddin 22        9.1200e+01

@@ -9,8 +9,6 @@ Fixed:13.1400
 
 Fixed:13.1915
 
-Scientific:1.3140e+01
-
 Scientific :1.3191e+01
 
 Name      Age            Score

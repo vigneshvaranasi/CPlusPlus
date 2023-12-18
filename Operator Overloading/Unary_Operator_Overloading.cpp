@@ -14,7 +14,7 @@ class unary
     {
         cout<<a<<" "<<b<<" "<<c<<endl;
     }
-    void operator ++()//Member function
+    void operator ++()
     {
         a++;
         b++;

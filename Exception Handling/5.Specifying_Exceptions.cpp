@@ -1,39 +1,18 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
-/* void check(int k)noexcept(int) */
-{
-    if (k == 1)
-        throw 'k';
-    else if (k == 2)
-        throw k;
-    else if (k == -2)
-        throw 1.0;
-    cout <<"\n End of function check()";
-}
-int main()
+void function(int value)throw(int)
 {
     try
     {
-        cout <<"k == 1\n";
-        check(1);
-        cout <<"k == 2\n";
-        check(2);
-        cout <<"k == -2\n";
-        check(-2);
-        cout <<"k == 3\n";
-        check(3);
+        if(value==1)
+            throw value;
     }
-    catch (char g)
+    catch(int expression)
     {
-        cout <<"Caught a character exception \n";
+        cout<<"Exception Caught";
     }
-    catch (int j)
-    {
-        cout <<"Caught a character exception \n";
-    }
-    catch (double s)
-    {
-        cout <<"Caught a double exception \n";
-    }
-    cout <<"\n End of main()";
+}
+int main()
+{
+       function(1);
 }

@@ -14,7 +14,7 @@ class binary
         b=y;
         c=z;
     }
-    binary operator +(binary b2)//Member Function
+    binary operator +(binary b2)
     {
         binary res;
         res.a=a+b2.a;

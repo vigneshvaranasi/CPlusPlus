@@ -14,7 +14,7 @@ class unary
     {
         cout<<a<<" "<<b<<" "<<c<<endl;
     }
-    friend void operator ++(unary &obj)//Friend function
+    friend void operator ++(unary &obj)
     {
         obj.a++;
         obj.b++;

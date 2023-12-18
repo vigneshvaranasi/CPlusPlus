@@ -9,6 +9,7 @@ int main()
     m.insert(pair <int,int> (9, 90));
     m.insert(pair <int,int> (2, 20));
     m.insert(pair <int,int> (5, 50));
+    m.insert(pair <int,int> (1, 70));
 
     map<int,int>::iterator i;
     cout<<"KEY\tElement\n";
